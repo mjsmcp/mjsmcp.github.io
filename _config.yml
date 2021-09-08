@@ -25,7 +25,7 @@ twitter_username: jekyllrb
 github_username:  jekyll
 domain: mjsmcp.com
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 
