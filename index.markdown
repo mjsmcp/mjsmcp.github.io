@@ -28,5 +28,8 @@ feature_row:
     btn_class: "btn--primary"
     btn_label: "Learn more"      
 ---
+Hello, world
 
 {% include feature_row %}
+
+
