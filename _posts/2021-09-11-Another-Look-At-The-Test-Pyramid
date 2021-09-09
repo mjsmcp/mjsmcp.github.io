@@ -1,0 +1,13 @@
+---
+title: "Another Look at the Test Pyramid"
+date: 2021-09-11 00:00:00 -0600
+categories: testing software
+---
+
+[The Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid) is a time-honored model for building your testing suite. You write a large number of unit tests, a medium number of service tests, and a small number of UI tests. As you move up the pyramid you are reducing the resolution of the tests. Therefore, you are necessarily depending on the lower layer to demonstrate correctness on details that the higher levels may ignore. For example, a unit test suite may cover all branches checking for invalid inputs, such as nulls, empty strings, and so on. The tests the next level up, however, will never pass nulls. They are relying on the lower level to do those checks.
+
+As you modify your code day-to-day, you run this test suite to ensure you aren't breaking things. By running the tests in order, from the base to the top, you build confidence in the correctness of your change. This works great for additive code changes where you aren't modifying the existing code in any substantial way, because you never have to change the existing tests, but we all know that very few code changes are purely additive. Often times we are refactoring extensive swaths of the system to support new functionality. These changes typically involve major surgery on the classes and general code architecture that result in us *throwing out unit tests* because the class no longer exists or no longer has the same public interface.
+
+So, what of those unit tests? In the end, what real value did they add in catching regressions related to this change? We just deleted them and wrote some new ones. By the time we commit our code and run the tests, they are incapable of serving the purpose they were created for. They were, in short, a complete waste of time and energy to write. We could've just not written them for all the work they did in preventing regressions. But this doesn't mean unit tests are useless. Rather, the implication is that our definition of "unit" is too small to support the kind of refactoring that happens in a real imperfect code base.
+
+Instead, let's consider the unit as **the architectural components within your code**. Classes are not architectural components. They are the building blocks of them. You may have a class called `DynamoDbQueryBuilder`, but that in-and-of-itself does not act as an architectural component. Rather, the `WidgetRepository` that uses that `DynamoDbQueryBuilder` acts as the architectural component. It is the class that handles communication with the database.
