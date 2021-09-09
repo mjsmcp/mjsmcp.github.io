@@ -1,6 +1,6 @@
 ---
 title: "Another Look at the Test Pyramid"
-date: 2021-09-09 00:00:00 -0600
+date: 2021-09-11 00:00:00 -0600
 categories: testing software
 toc: true
 ---
