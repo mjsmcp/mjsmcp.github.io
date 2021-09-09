@@ -29,7 +29,7 @@ feature_row:
     btn_label: "Learn more"      
 ---
 Hello, world
-
+{% include sidebar.html %}
 {% include feature_row %}
 
 
