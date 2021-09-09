@@ -267,12 +267,3 @@ defaults:
       comments: false
       share: true
       related: true
-
-  # home
-  - scope:
-      path: ""
-      type: home
-    values:
-      layout: single
-      author_profile: true
-      comments: # true
